@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+    --ink: #18243a;
+    --muted: #6d7789;
+    --line: #dfe5ee;
+    --panel: rgba(255, 255, 255, 0.94);
+    --primary: #d65f46;
+    --primary-dark: #bd4c35;
+    --cream: #f5f1e8;
+    --success: #3a8063;
+    --error: #c84b46;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    padding: 48px 20px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 12% 18%, rgba(214, 95, 70, 0.12), transparent 22%),
+        radial-gradient(circle at 88% 82%, rgba(65, 119, 132, 0.16), transparent 25%),
+        linear-gradient(135deg, #ebe8de 0%, #f8f6f1 100%);
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(24, 36, 58, 0.08);
+    border-radius: 50%;
+}
+
+body::before {
+    top: -130px;
+    right: -90px;
+}
+
+body::after {
+    bottom: -150px;
+    left: -70px;
+}
+
+.contenedor {
+    width: min(760px, 100%);
+    padding: 42px 44px 38px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    background: var(--panel);
+    box-shadow: 0 24px 70px rgba(53, 63, 82, 0.14);
+    backdrop-filter: blur(12px);
+}
+
+.contenedor > h1 {
+    margin: 0 0 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+}
+
+.contenedor > p {
+    margin: 0 0 30px;
+    color: var(--muted);
+    font-size: 0.96rem;
+}
+
+.contenedor > p::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin-top: 18px;
+    border-radius: 99px;
+    background: var(--primary);
+}
+
+#formulario {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 20px;
+}
+
+.grupo {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.grupo label {
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.grupo input,
+.grupo select {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    outline: none;
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.grupo select {
+    cursor: pointer;
+}
+
+.grupo input::placeholder {
+    color: #adb4c0;
+}
+
+.grupo input:focus,
+.grupo select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(214, 95, 70, 0.11);
+}
+
+.grupo input:hover,
+.grupo select:hover {
+    border-color: #bdc6d5;
+}
+
+.grupo small {
+    min-height: 19px;
+    margin-top: 5px;
+    color: var(--error);
+    font-size: 0.72rem;
+    line-height: 1.25;
+}
+
+.grupo input.error,
+.grupo select.error {
+    border-color: var(--error);
+}
+
+.grupo input.exito,
+.grupo select.exito {
+    border-color: var(--success);
+}
+
+.terminos {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+}
+
+.terminos label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    margin: 0;
+    cursor: pointer;
+    font-size: 0.88rem;
+}
+
+.terminos input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--primary);
+}
+
+#btnRegistrar {
+    grid-column: 1 / -1;
+    min-height: 52px;
+    margin-top: 4px;
+    border: 0;
+    border-radius: 11px;
+    background: var(--primary);
+    color: #fff;
+    font: 700 0.92rem 'DM Sans', sans-serif;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(214, 95, 70, 0.24);
+    transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+#btnRegistrar:hover:not(:disabled) {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(214, 95, 70, 0.28);
+}
+
+#btnRegistrar:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#btnRegistrar:disabled {
+    background: #cfd5df;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.78;
+}
+
+#mensajeFinal {
+    grid-column: 1 / -1;
+    min-height: 24px;
+    margin: 2px 0 -8px;
+    text-align: center;
+    font-weight: 700;
+}
+
+@media (max-width: 680px) {
+    body {
+        align-items: start;
+        padding: 20px 12px;
+    }
+
+    .contenedor {
+        padding: 30px 20px;
+        border-radius: 18px;
+    }
+
+    #formulario {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .terminos,
+    #btnRegistrar,
+    #mensajeFinal {
+        grid-column: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
